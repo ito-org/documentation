@@ -1,0 +1,49 @@
+name: github pages
+
+on:
+  push: 
+  pull_request:
+    branches:
+      - source
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: source
+          submodules: true
+      
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.62.2'
+          extended: true
+      
+      - name: Build
+        run: hugo --minify 
+      
+      - name: Builded Webpage
+        if: startsWith(github.ref, 'refs/heads/source')
+        uses: actions/upload-artifact@v1
+        with:
+          name: public_source
+          path: ./public
+
+  deploy:
+    needs: [build]
+    if: startsWith(github.ref, 'refs/heads/source')
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/download-artifact@v1
+        with:
+          name: public_source
+          path: .
+        
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: master # deploying branch
