@@ -1,9 +1,9 @@
 ---
 weight: 11
-title: Kittens
+title: Kittens Server
 ---
 
-# Kittens
+# Kittens Server
 
 ## Get All Kittens
 

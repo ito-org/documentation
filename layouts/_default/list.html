@@ -1,0 +1,24 @@
+{{ define "main" }}
+    {{ range where .Site.Pages "Section" "home"}}
+        {{ .Content }}
+    {{ end }}
+{{ end }}
+
+{{ define "toc" }}
+    <ul id="toc" class="toc-list-h1">
+        {{ $t := where .Site.Pages "Section" "home"}}
+        {{ $headers := partial "funcs/toc_from_pages" $t }}
+        {{ range $headers }}
+            <li>
+                <a href="#{{ .id }}" class="toc-h{{ .level }} toc-link" data-title="{{ .title }}">{{ .title }}</a>
+                {{if .sub }}
+                    <ul class="toc-list-h2">
+                        {{range .sub}}
+                            <li><a href="#{{ .id }}" class="toc-h{{ .level }} toc-link" data-title="{{ .title }}">{{ .title }}</a></li>
+                        {{end}}
+                    </ul>
+                {{end}}
+            </li>
+        {{end}}
+    </ul>
+{{ end }}
