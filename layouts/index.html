@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ .Lang | default "en" }}">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{ .Title }}</title>
+    {{ partial "styles.html" . }}
+    {{ partial "js.html" . }}
+    {{ partial "hook_head_end.html" . }}
+</head>
+<body class="index" data-languages="{{ with .Site.Params.language_tabs  }}[{{ range $i,$e := . }}{{- if $i -}}, {{ end -}}{{ printf " %q " $e.key }}{{end}}]{{ end }}">
+    <a href="#" id="nav-button">
+        <span>
+        NAV
+        <img src='{{ relURL "images/navbar.png" }}'/>
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        {{ partial "hook_left_sidebar_start.html" . }}
+        {{ partial "hook_left_sidebar_logo.html" . }}
+        
+    {{ partial "hook_body_end.html" . }}
+</body>
+</html>
