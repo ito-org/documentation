@@ -25,6 +25,7 @@ To start `docker-compose` you need to set the following environment variables so
 > Example `.env` file
 
 ```yaml
+POSTGRES_HOST:     <Database host>
 POSTGRES_DB:       <Database name>
 POSTGRES_USER:     <Username for db>
 POSTGRES_PASSWORD: <secretpw>
@@ -32,7 +33,8 @@ POSTGRES_PASSWORD: <secretpw>
 
 Parameter | Required | Description
 --------- | ------- | -----------
-POSTGRES_DB | yes | The name of the postgres database
+POSTGRES_HOST | yes | The host of the postgres database
+POSTGRES_DB | yes | The name of the Postgres database
 POSTGRES_USER | yes | The postgres user with access to the database
 POSTGRES_PASSWORD | yes | A secret password for the database user
 
@@ -48,7 +50,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file: .env
     ports:
       - 8080:8080
     depends_on:
@@ -58,7 +59,6 @@ services:
     
   postgres:
     image: postgres:12
-    env_file: .env
     volumes:
       - ./db/db.sql:/docker-entrypoint-initdb.d/db.sql
       - dbvol:/var/lib/postgresql/data
