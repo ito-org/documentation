@@ -1,11 +1,11 @@
 <!doctype html><html lang=en><head><meta charset=utf-8><meta content="IE=edge,chrome=1" http-equiv=x-ua-compatible><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>ito API</title><link href=/styles/screen.min.effe22ccbf96cbbaaf00a2e507f631d3322b75caa57a23f93c11e3e6085a1b93.css rel=stylesheet media=screen integrity="sha256-7/4izL+Wy7qvAKLlB/Yx0zIrdcqleiP5PBHj5ghaG5M="><link href=/styles/print.min.37fed562cbce32487e14eddeaa39b2e79a3881ecb2baef830072d78b6fe0c70d.css rel=stylesheet media=print integrity="sha256-N/7VYsvOMkh+FO3eqjmy55o4geyyuu+DAHLXi2/gxw0="><script src=/js/all.min.af482a17639ac52499e7e9f85314de520da5a075168d0c2410145640dea01b9a.js integrity="sha256-r0gqF2OaxSSZ5+n4UxTeUg2loHUWjQwkEBRWQN6gG5o="></script></head><body class=index data-languages='[ "go" ,  "java" ]'><a href=# id=nav-button><span>NAV
 <img src=/images/navbar.png></span></a><div class=toc-wrapper><img src=/images/logo.png class=logo><div class=lang-selector><a href=# data-language-name=go>Go</a>
 <a href=# data-language-name=java>Java</a></div><div class=search><input type=search class=search id=input-search placeholder=Search></div><ul class=search-results></ul><ul id=toc class=toc-list-h1><li><a href=#installation class="toc-h1 toc-link" data-title=Installation>Installation</a><ul class=toc-list-h2><li><a href=#docker-compose class="toc-h2 toc-link" data-title="Docker Compose">Docker Compose</a></li></ul></li><li><a href=#api class="toc-h1 toc-link" data-title=API>API</a><ul class=toc-list-h2><li><a href=#fetching-reports class="toc-h2 toc-link" data-title="Fetching reports">Fetching reports</a></li><li><a href=#publishing-a-report class="toc-h2 toc-link" data-title="Publishing a report">Publishing a report</a></li></ul></li></ul><ul class=toc-footer><li>Edit on Github</li><li>Documentation Powered by <a href=https://github.com/bep/docuapi>DocuAPI</a></li><li>Hugo Theme by <a href=https://github.com/bep>bep</a></li></ul></div><div class=page-wrapper><div class=dark-box></div><div class=content><h1 id=installation>Installation</h1><blockquote><p>You can clone the repository by using this code</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git clone <span style=color:#e6db74>&#34;https://github.com/ito-org/api-backend&#34;</span>
-</code></pre></div><p>To start with this application, download the current version by using <code>git clone</code>.</p><p>The recommended way to install the API server is to use docker with <code>docker-compose</code>.</p><h2 id=docker-compose>Docker Compose</h2><p>To start <code>docker-compose</code> you need to set the following environment variables so that the server knows how to connect to your Postgres database. For that you can add an <code>.env</code> file to the root of the api-backend folder with the following lines.</p><h3 id=environment-variables>Environment Variables</h3><blockquote><p>Example <code>.env</code> file</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>POSTGRES_HOST:     &lt;Database host&gt;
-POSTGRES_DB:       &lt;Database name&gt;
-POSTGRES_USER:     &lt;Username for db&gt;
-POSTGRES_PASSWORD: &lt;secretpw&gt;
-</code></pre></div><table><thead><tr><th>Parameter</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>POSTGRES_HOST</td><td>yes</td><td>The host of the postgres database</td></tr><tr><td>POSTGRES_DB</td><td>yes</td><td>The name of the Postgres database</td></tr><tr><td>POSTGRES_USER</td><td>yes</td><td>The postgres user with access to the database</td></tr><tr><td>POSTGRES_PASSWORD</td><td>yes</td><td>A secret password for the database user</td></tr></tbody></table><h3 id=docker-compose-example>Docker-Compose Example</h3><blockquote><p>Example <code>docker-compose.yaml</code></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>version: <span style=color:#e6db74>&#34;3&#34;</span>
+</code></pre></div><p>To start with this application, download the current version by using <code>git clone</code>.</p><p>The recommended way to install the API server is to use docker with <code>docker-compose</code>.</p><h2 id=docker-compose>Docker Compose</h2><p>To start <code>docker-compose</code> you need to set the following environment variables so that the server knows how to connect to your Postgres database. For that you can add an <code>.env</code> file to the root of the api-backend folder with the following lines.</p><h3 id=environment-variables>Environment Variables</h3><blockquote><p>Example <code>.env</code> file</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ini data-lang=ini><span style=color:#a6e22e>POSTGRES_HOST</span><span style=color:#f92672>=</span><span style=color:#e6db74>&lt;Database host&gt;</span>
+<span style=color:#a6e22e>POSTGRES_DB</span><span style=color:#f92672>=</span><span style=color:#e6db74>&lt;Database name&gt;</span>
+<span style=color:#a6e22e>POSTGRES_USER</span><span style=color:#f92672>=</span><span style=color:#e6db74>&lt;Username for db&gt;</span>
+<span style=color:#a6e22e>POSTGRES_PASSWORD</span><span style=color:#f92672>=</span><span style=color:#e6db74>&lt;secretpw&gt;</span>
+</code></pre></div><table><thead><tr><th>Parameter</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>POSTGRES_HOST</td><td>yes</td><td>The host of the Postgres database</td></tr><tr><td>POSTGRES_DB</td><td>yes</td><td>The name of the Postgres database</td></tr><tr><td>POSTGRES_USER</td><td>yes</td><td>A Postgres user with access to the database</td></tr><tr><td>POSTGRES_PASSWORD</td><td>yes</td><td>The database user's secret password</td></tr></tbody></table><h3 id=configuration>Configuration</h3><blockquote><p>Example <code>docker-compose.yaml</code></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml>version: <span style=color:#e6db74>&#34;3.7&#34;</span>
 
 services:
   go-backend:
@@ -14,6 +14,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - <span style=color:#ae81ff>8080</span>:<span style=color:#ae81ff>8080</span>
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_DB
     depends_on:
       - postgres
     networks:
@@ -21,6 +25,12 @@ services:
     
   postgres:
     image: postgres:<span style=color:#ae81ff>12</span>
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_DB
+    ports:
+      - <span style=color:#ae81ff>5432</span>:<span style=color:#ae81ff>5432</span>
     volumes:
       - ./db/db.sql:/docker-entrypoint-initdb.d/db.sql
       - dbvol:/var/lib/postgresql/data
@@ -33,18 +43,20 @@ networks:
 
 volumes:
   dbvol:
-</code></pre></div><p>You can use the example <code>docker-compose.yml</code> in the repository to start a fully working installation backend.</p><p>Starting the containers with <code>docker-compose up</code> to start it in forground mode or use <code>docker-compose up -d</code> to start it as a deamon.</p><h1 id=api>API</h1><p>The ito API has intentionally been kept extremely lean, there is only one endpoint: <code>https://tcn.ito-app.org/tcnreport</code></p><blockquote><p>Initialization</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+</code></pre></div><p>You can copy the <code>docker-compose.yml.example</code> file in the repository to <code>docker-compose.yml</code> to configure a fully working backend with the default configuration.</p><p>Run <code>docker-compose up</code> to start the containers in foreground mode or use <code>docker-compose up -d</code> to start them as daemons (in detached mode).</p><p>In the default configuration, the HTTP server will be accessible on port <code>8080</code>.</p><h1 id=api>API</h1><p>The ito API has intentionally been kept lean, so there is just one endpoint: <a href=https://tcn.ito-app.org/tcnreport><code>https://tcn.ito-app.org/tcnreport</code></a></p><p>This way our code stays easy to understand and to audit.</p><blockquote><p>Initialization of a basic client</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
 
 <span style=color:#f92672>import</span> (
 	<span style=color:#e6db74>&#34;bytes&#34;</span>
 	<span style=color:#e6db74>&#34;net/http&#34;</span>
 	<span style=color:#e6db74>&#34;github.com/ito-org/go-backend/tcn&#34;</span>
 )
+
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>baseUrl</span> = <span style=color:#e6db74>&#34;https://tcn.ito-app.org&#34;</span>
 </code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ItoApi</span> <span style=color:#f92672>{</span>
 	<span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>final</span> String BASE_URL
 		<span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;https://tcn.ito-app.org&#34;</span><span style=color:#f92672>;</span>
 <span style=color:#f92672>}</span>
-</code></pre></div><p>This way our code stays easy to understand and to audit.</p><h2 id=fetching-reports>Fetching reports</h2><p>With a <code>GET</code> request you can download all recent reports of infected users. Those are returned as a bytestream (MIME type <code>application/octet-stream</code>) of TCN reports as per the protocol definition.</p><blockquote><p>Example client code for fetching recent reports</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>int</span> BASELENGTH <span style=color:#f92672>=</span> 70<span style=color:#f92672>;</span>
+</code></pre></div><p>Here's how to setup a basic ito client.</p><h2 id=fetching-reports>Fetching reports</h2><p>With a <code>GET</code> request you can download all recent reports of infected users. Those are returned as a bytestream (MIME type <code>application/octet-stream</code>) of TCN reports as per the protocol definition.</p><blockquote><p>Example client code for fetching recent reports</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>int</span> BASELENGTH <span style=color:#f92672>=</span> 70<span style=color:#f92672>;</span>
 <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> List<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span><span style=color:#f92672>]</span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>getReports</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 	List<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span><span style=color:#f92672>]</span><span style=color:#f92672>&gt;</span> reports <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> LinkedList<span style=color:#f92672>&lt;</span><span style=color:#f92672>&gt;</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
 	HttpURLConnection urlConnection <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
