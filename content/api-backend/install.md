@@ -40,7 +40,7 @@ POSTGRES_PASSWORD | yes | A secret password for the database user
 
 > Example `docker-compose.yaml`
 
-```docker
+```yaml
 version: "3"
 
 services:
