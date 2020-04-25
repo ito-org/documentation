@@ -1,9 +1,9 @@
 ---
 weight: 2
-title: Install Server
+title: Installation
 ---
 
-# Installing Server
+# Installation
 
 > You can clone the repositoring by using this code
 
@@ -22,7 +22,7 @@ To start `docker-compose` you need to set the following environment variables so
 
 ### Environment Variables
 
-> Example of the .env file
+> Example `.env` file
 
 ```
 POSTGRES_DB:       <Database name>
@@ -38,7 +38,7 @@ POSTGRES_PASSWORD | yes | A secret password for the database user
 
 ### Docker-Compose Example
 
-> Example docker-compose.yaml
+> Example `docker-compose.yaml`
 
 ```docker
 version: "3"

@@ -3,29 +3,44 @@ weight: 10
 title: API Reference
 ---
 
-# Introduction
+# API
 
 The ito API has intentionally been kept extremely lean, there is only one endpoint: `https://tcn.ito-app.org/tcnreport`
+
+> Initialization
+
+```go
+package main
+
+import (
+	"bytes"
+	"net/http"
+	"github.com/ito-org/go-backend/tcn"
+)
+```
 
 ```java
 public class ItoApi {
 	private static final String BASE_URL
-		= "https://tcn.ito-app.org/tcnreport";
+		= "https://tcn.ito-app.org";
 }
 ```
 
 This way our code stays easy to understand and to audit.
 
-## Getting reports
+## Fetching reports
 
-With a `GET` request you can receive all reports of infected users. This is formatted as a bytestream (MIME type `application/octet-stream`).
+With a `GET` request you can download all recent reports of infected users. Those are returned as a bytestream (MIME type `application/octet-stream`) of TCN reports as per the protocol definition.
+
+> Example client code for fetching recent reports
 
 ```java
+private static final int BASELENGTH = 70;
 public static List<byte[]> getReports() {
 	List<byte[]> reports = new LinkedList<>();
 	HttpURLConnection urlConnection = null;
 	try {
-		URL url = new URL(BASE_URL);
+		URL url = new URL(BASE_URL + "/tcnreport");
 		urlConnection
 			= (HttpURLConnection) url.openConnection();
 		urlConnection.addRequestProperty(
@@ -38,7 +53,8 @@ public static List<byte[]> getReports() {
 		int readBytes;
 		while ((readBytes = in.read(base, 0, BASELENGTH))
 				== BASELENGTH) {
-			int memolength = (int) base[BASELENGTH - 1] & 0xFF;
+			int memolength
+				= (int) base[BASELENGTH - 1] & 0xFF;
 			memo = new byte[memolength];
 			if (in.read(memo, 0, memolength)
 					< memolength) {
@@ -76,14 +92,6 @@ public static List<byte[]> getReports() {
 ```
 
 ```go
-package main
-
-import (
-	"bytes"
-	"net/http"
-	"github.com/ito-org/go-backend/tcn"
-)
-
 func main() {
 	_, rak, report, err := tcn.GenerateReport(0, 1, []byte("symptom data"))
 	if err != nil {
@@ -111,13 +119,15 @@ func main() {
 
 With a `POST` request you can report yourself as infected.
 
+> Example client code for submitting a report
+
 ```java
 public static void publishReport(
 	byte[] report
 ) throws IOException {
 	HttpURLConnection urlConnection = null;
 	try {
-		URL url = new URL(BASE_URL);
+		URL url = new URL(BASE_URL + "/tcnreport");
 		urlConnection
 			= (HttpURLConnection) url.openConnection();
 		urlConnection.setDoOutput(true);
