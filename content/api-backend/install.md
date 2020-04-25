@@ -5,10 +5,10 @@ title: Installation
 
 # Installation
 
-> You can clone the repositoring by using this code
+> You can clone the repository by using this code
 
 ```bash
-git clone https://github.com/ito-org/api-backend
+git clone "https://github.com/ito-org/api-backend"
 ```
 
 To start with this application, download the current version by using `git clone`.
@@ -24,7 +24,7 @@ To start `docker-compose` you need to set the following environment variables so
 
 > Example `.env` file
 
-```
+```yaml
 POSTGRES_DB:       <Database name>
 POSTGRES_USER:     <Username for db>
 POSTGRES_PASSWORD: <secretpw>
