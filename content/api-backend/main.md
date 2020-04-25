@@ -5,9 +5,11 @@ title: API Reference
 
 # API
 
-The ito API has intentionally been kept extremely lean, there is only one endpoint: `https://tcn.ito-app.org/tcnreport`
+The ito API has intentionally been kept lean, so there is just one endpoint: [`https://tcn.ito-app.org/tcnreport`](https://tcn.ito-app.org/tcnreport)
 
-> Initialization
+This way our code stays easy to understand and to audit.
+
+> Initialization of a basic client
 
 ```go
 package main
@@ -17,6 +19,8 @@ import (
 	"net/http"
 	"github.com/ito-org/go-backend/tcn"
 )
+
+const baseUrl = "https://tcn.ito-app.org"
 ```
 
 ```java
@@ -26,7 +30,7 @@ public class ItoApi {
 }
 ```
 
-This way our code stays easy to understand and to audit.
+Here's how to setup a basic ito client.
 
 ## Fetching reports
 
