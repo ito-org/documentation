@@ -33,17 +33,8 @@ search = true
 key = "go"
 name = "Go" 
 [[params.language_tabs]]
-key = "shell"
-name = "Shell" 
-[[params.language_tabs]]
-key = "ruby"
-name = "Ruby"
-[[params.language_tabs]]
-key = "python"
-name = "Python"
-[[params.language_tabs]]
-key = "javascript"
-name = "Javascript"
+key = "java"
+name = "Java"
 
 #Languages 
 [languages]
