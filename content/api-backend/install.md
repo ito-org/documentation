@@ -8,16 +8,16 @@ title: Install Server
 > You can clone the repositoring by using this code
 
 ```bash
-git clone https://github.com/ito-org/api-backend.git
+git clone https://github.com/ito-org/api-backend
 ```
 
-To start with this application, download the current version by using git clone.
+To start with this application, download the current version by using `git clone`.
 
-The recommanded way to install the Server is to use docker with docker-compose.
+The recommended way to install the API server is to use docker with `docker-compose`.
 
 ## Docker Compose
 
-To start the ``docker-compose`` you need to add a ``.env`` file to the root of the api-backend folder with the following lines.
+To start the ``docker-compose`` you need to set the following environment variables so that the server knows how to connect to your Postgres database. For that you can add an ``.env`` file to the root of the api-backend folder with the following lines.
 
 
 ### .env Variables
@@ -30,7 +30,7 @@ POSTGRES_USER:     <Username for db>
 POSTGRES_PASSWORD: <secretpw>
 ```
 
-Parameter | Requied | Description
+Parameter | Required | Description
 --------- | ------- | -----------
 POSTGRES_DB | yes | The name of the postgres database
 POSTGRES_USER | yes | The postgres user with access to the database
