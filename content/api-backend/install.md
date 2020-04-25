@@ -17,10 +17,10 @@ The recommended way to install the API server is to use docker with `docker-comp
 
 ## Docker Compose
 
-To start the ``docker-compose`` you need to set the following environment variables so that the server knows how to connect to your Postgres database. For that you can add an ``.env`` file to the root of the api-backend folder with the following lines.
+To start `docker-compose` you need to set the following environment variables so that the server knows how to connect to your Postgres database. For that you can add an `.env` file to the root of the api-backend folder with the following lines.
 
 
-### .env Variables
+### Environment Variables
 
 > Example of the .env file
 
